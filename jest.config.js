@@ -28,16 +28,19 @@ const ESM_PACKAGES_TO_TRANSFORM = [
 
 process.env.EXPO_PUBLIC_USE_RN_FETCH = '1';
 
-const presetTransform =require('jest-expo/jest-preset').transform;
+const jestExpoPreset = require('jest-expo/jest-preset');
+const presetTransform = jestExpoPreset.transform;
 
 module.exports = {
   preset: 'jest-expo',
+  testEnvironment: jestExpoPreset.testEnvironment,
   watchman: false,
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   transform: {
     ...presetTransform,
     '\\.mjs$': presetTransform['\\.[jt]sx?$'],
   },
+  modulePathIgnorePatterns: ['<rootDir>/.stryker-tmp/'],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
   },
