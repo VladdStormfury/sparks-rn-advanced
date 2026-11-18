@@ -6,5 +6,6 @@
   "coverageAnalysis": "perTest",
   "htmlReporter": { "fileName": "reports/mutation/index.html" },
   "tempDirName": ".stryker-tmp",
+  "ignorePatterns": ["/ios", "/android"],
   "jest": { "configFile": "jest.config.js", "enableFindRelatedTests": false }
 }
